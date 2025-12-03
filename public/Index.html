@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte Técnico Bytte S.A.S</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://bytte.website/wp-content/uploads/2024/10/bytte_NLogo_inv@3x.png" type="image/png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ <!-- PANEL DE LOGIN -->
+<div id="loginPanel" class="login-box" style="position: relative; padding-top: 60px;">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAABeCAIAAAHWHSHEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAu7SURBVHhe7Z29rhzHEYX9Pn4Pv4SeQY9gODbgTJEDhXZqMHIiwCFDwYkTSxmthFAiQJRIiqS/mVOsW1v9sz1zZ+fu7p2Dg0FPdXVXV1f/zezw8nef1uKh5IfXr37+0+8TLa+GqWTSjpRSFQ8lde9lorCKbPPDq//G21++/hKJhGji0ftvv5kL1mzG669//+MsNsnHt2+4qnC2qVvlkYglf/3HX969fCEiqfuZEvGqBMg2RRfOOnXUS4pkeWvf/vOvSjimkt5698Hx/j8vkXB9+6+/cfvmz38grayp5DpsUTI5CS2jgTM91IGV1E0s5sIWHkr61anh6ldyFSRuuVZsKqEA+m26gorNSVwTco0BP7EJSDOyldDVyTBQYlb8XDKSkkpIo4VKSVFTsYOppFoffXDQQiXUYQxaVglJppLrsL7kajyYrC7UHVqx5TCTqboRquAKZJO6dbi8JLnMGyUEl1fhC2DFpBI+5iVkxfe0y1ssFVRKaJp889UXpDVlfvv+35KndrS8lDxROuCMSb9VGuhWkk7HkvD5lLBg+KAWR7UKgrOTP2HIpHSIfylcgQVelt4g5BoXLST0xIf/fedZ5ZJmJvfEYfJCqJhkRmq89Gnay/FgctCS04otx2Qy1TVIlV+BpzYpkcChw+VVmt5yNE0KnlXSc6Om0iU48+vYDyomy3SVOuMqkdIqyz4DldbzhtLnTXrC5Z5ukdU43rp/QrNjfd/Qxqm0VnalY2IwLQx1rKe5fvzpRxem3JSOlFxomtSpOcldEtNzZiWtnavcv0aHD+nYq5J4opMG5006/FTnWf7AIklMxyETs1ziODHZISFMmnPxDKk5yoMEGDUp7VKyAudNSg+05Esx6qVTp+cEjlhcfa3pY9Rk1ZImgGYqt24SCXNMDyGsfynAk0mVbFF6JXQYZzFjeVLtMomcW/zWYwXwVVeYTO6Mw+Td4Nk7ycxaepoeodW+Ix6cvJBLJc3ejnhwMjXlcjR7O+LZO2kZDaQXQOO08mGC2H2AP/HZ/TDYldmwfZMWhpyMQu38AoeFmDVIlaUpSeJweZl1FjrC+O9HwmIno1xOxhNYVBP91Hz2cbxPVRKfBSKrp0DHkJPxkdjBAc4142nRhbDqv25XRDLKve8w4UJJSqyfk7H2qFw+pQGXuHCpk9VqBU7QkvvvRwlrhmt8xxDlJvos9M72X9dECZc6GfU7NO1TrHIyrD1RHh9a/CeDGAFR8qVOsmCWwkGsH66g3EUsIyApQMmT83SQ90s8eJEmiyvyFExWMlYKnPfVQcVLrHGyDE6kKc1IWaLl1ZZKyziNW8rSkl4yjqOEnpPraNUVU9Fp2TtiGyetioDOWd80dsQ2TjIrGC3MkNZYEplU6f3LPth+uDrZSH0XKYGCDhhcUcP/Dz98jzD2ghToOFY4HUcflF+/Io1cUxFb6SgXsZmT2Ou4VIIiap92XXzTuW/OPAH+KMF4wVXt+O4eV/VFx/qDk1cOPOnEqo+bcfIxOJy8Cxwe3j4OD2f4k+jjyd5tle6FnocbOua8Cg8v4ZjzKT28qGPOJ/MQw6kpF+Lh4fY4PNyaV+Sh5CWm59HTV8aLeAMeOpL+IKOHWr31LBvhnWj3S0DB1InrPeQxPBUZoZt3SfKQW88y0TDkxS9ff6m3r8J5D6PJKAdRPsiLeqgXx5h4lIfeRBDlg6QRVBjrfP/tN5KI8U20C83eZ7x7+YJmwLfzd04mnYFv6WecDTy0m/nNkqs5LW9Vdzitilo7xfOvpMY9NGmQxzdFrpayqs6PU5VoELYonRLnPaR7ynGCsKqcGmHS8F7ch4DrpMpjh5poRuwjBqcJQzPi4Io472ECLShf41teESuTBn9We+i/jsRVBMQl3USnWOyhkDzxTgUu9CGq177iag9dmPSBZ9n9KRbPw7h2RbmJwkC1+1O1x3vYYek8WOxhzCJ0LvTVzMOrW+A68MY8jFmEzqRza9jWlE6H2Md7yFmP/bBKOte0AzbzMMqTt5GbeGiiMTxqHqb4eJaP2LjQiaWHVCKJEM3pBzYh2jJRABZbP+Cc97CDVCQdl0D5A3jpIdTPZtUs5NPRbI5zlOMwQoiCJCRUPGG9h0lftLzPSLnQ3ShffHlW2S9qfTkiIjfzEDOd05MvMKD6NYe7ATpGk5Ox9eV5AyL0qZHQ9HA1VSFIcjF6uA829jBOxZQl3ryHqg1UxxK8VQ9ViSMe+RNv0sO4vwtJIfJWY8iWxYYLO8ssjCvtbth4HlbZOm10QHtg9ZzZAoYsdYoLenjWMZ1UuLL7+3laWRTnSqt0xVUpc46blOfHUdJSYItW+0mX2N7D8YjJH65qaAT1MOD9aygdAPDztx++085OKc1/EnrqR4FriW08pAXxlHwWOqO7h1zTuwnq1FUJoEmuSAJKeXG56poJ5iHlVWYpFznmkD+MNxqHafpXA88PDEgg4YIIMYRQOpy55ZIGC1cdJMuBIJiH1w95tQI34+FqHB7ePg4Pbx/37+FzwBHFe8ARxXvA9lHkNMzBWgfoayCNsZbdLx4bRcWs9Q7xGkggra33i2VRvP6YlXzuUbzFmJV8jlFMP2PfAZ9lFC/5uv9JeETxHnhE8R54RLFOdMb55Icj2mC+3S/WRNFUl0M/j6XaLs1+FHUO52r3A/g4fz2onwCvBLtG0bFnLFMU3718oV/TI/1H5yo+/vRj9ehu2RcDrcIKi9n0Ecz8+WDrl+ptoih7kcRpst3+omG3QKYoVh3sR7H0TrTsiwETbprOVNryTnGpKEZWY9kvsiFvN4r6FEft50q69cnZHlFM/SjEItWFovoJcslyiOgDlqS2D60Fp6CFZ494rEzrvusRdpmLtRGUVlR97ZVwdtVluzLVgN3W6pLWghl4tKIlFKl2RR+XiuK0FDT+7FrVPSSWHcCxIqkllg5z4Ew6e9Ia0W4G3cIOp4/qSLTWDPrTKhrDNlEcxLS2tNc6fcSX0FlXyyHCopR0YFrPqw72e6210lh2gWoIiZllF6g2adE3xjtFkUlDF+NJqiqx+txWXZfKtRQTSUfcOYq4kNQgcbXsBkofU7P72GhFnb/JTmRutXbsVjiZqaYRUF1Xy7W0GmxIS0xjBrdJAW4YxfpEbP/7UbHaqtLHFvY43RCbskFIqqtr9cCS1tVyLW3tQ3DnKI504CD7rYrYI4owdaVQ3cZg9UzkU60Mc6se8YhinaYacDaK1SNop1S5t/u6mrJa26Fz5yiyPCY1OB6PddhrRa2duDrnTx6TTSkA/fLRs7UdOkeiSNdbdg2LolgdVdU9ZUNc8HTDXtU63YDqmSWyczR3dLZDJy0x7Rmtg1U6Hqdhl5RFBlCKjW5bUZ/0288PZDGYdFboj6oS20RxKdj5Up1VdgYB6G+HzhTFs6NHTKWq62RJbzDhrJ7dBnnVUaQHR+qPbC1EyJNmiykegLJL12EwMmhS7zO/zxqqco8oojPIdT5EUoO17BTjnxDQDCtTgKWPE285aTDaWs8ZAXRx6ReVYKhzimEQsP5XO0Rl+xtQH2uiuDPTjgVGtkNnJ4p3g2uPYrm2DO6pziOKu5L1hJg5q6vT0hDCI4q70lrQxtmX6VUeUdyPnb7Ww2jSH+fIc+et4wZON4uon6Zbzye3gvI00MdtR3FFzChlqXOoaiJkw9YjSvlefiuMN1K4pShuMs+oh6sOUJIoDXlum17VziaIE5pckzkJ4fRMOf/2S0HSSPQ4SHGuUtYtXUrLUaByTOhNG/Vwq3r0cpgsakCiEKiGQVxvFDeJWQlq5qqwSaI0hnR6UmyANBNcSHfT75JETmGg5fOLewWPLlURgCGEXN2KrCc16rHUGK4iitMw/PxfYF4O9BQDX13P+Hgz/wFVjk5Ipn58/Qoipz1c0VEivb9GSD0KleYcLSetqtwF6pShKT1/3E2CUgi5KnLKVZriZMmuBpNyB5GjeODxUEiIlt1fHkcUNwZzl0lpN3vhiOI94IjiPeCI4j3giOI94Iji7ePTp/8DmYa96azZxE4AAAAASUVORK5CYII="  
+       alt="Logo Bytte S.A.S"  
+       style="position: absolute; top: 10px; left: 10px; height: 60px;" />
+
+  <h2 style="text-align: center; margin: 0;">Acceso al Reporte</h2>
+
+  <label for="USUARIO_VALIDO">Usuario:</label>
+  <input type="text" id="USUARIO_VALIDO" placeholder="Ingrese su usuario" />
+
+<label for="CONTRASENA_VALIDA">Contraseña:</label>
+<div style="position: relative;">
+  <input type="password" id="CONTRASENA_VALIDA" placeholder="Ingrese su contraseña" style="padding-right: 30px;" />
+  <span onclick="toggleContrasena()" style="
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+  ">👁️</span>
+</div>
+
+<script>
+function toggleContrasena() {
+  const input = document.getElementById("CONTRASENA_VALIDA");
+  const icon = input.nextElementSibling;
+  if (input.type === "password") {
+    input.type = "text";
+    icon.textContent = "🚫"; // cambia el icono
+  } else {
+    input.type = "password";
+    icon.textContent = "👁️";
+  }
+}
+
+</script>
+
+  <button onclick="verificarLogin()">Ingresar</button>
+  <p id="error"></p>
+</div>
+
+    <!-- PANEL DE SELECCIÓN -->
+    <div id="seleccionPanel" class="seleccion-panel">
+      <h1>Bytte S.A.S</h1>
+      <p style="text-align:center;">¿Qué deseas hacer?</p>
+      <div class="botones-seleccion">
+        <button class="btn-generar" onclick="mostrarReporte()">📋 Generar Reporte</button>
+        <button class="btn-consultar" onclick="mostrarModalConsulta()">🔍 Consultar Caso</button>
+      </div>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
+
+    <!-- MODAL PARA CONSULTAR CASO -->
+    <div id="consultaModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="cerrarModalConsulta()">&times;</span>
+        <h2>Consultar Caso</h2>
+        <label for="ticketId">ID del Ticket:</label>
+        <input type="number" id="ticketId" placeholder="Ej: 123456" min="1" />
+        <button onclick="consultarCaso()">Buscar</button>
+        <div id="modalAlert" style="display:none;"></div>
+      </div>
+    </div>
+
+  <!-- RESULTADO DEL CASO -->
+  <div id="resultadoCaso" class="resultado-caso">
+    <h2>Detalles del Caso</h2>
+    <div id="contenidoCaso"></div>
+<div id="conversacionesTicket"></div>
+<div id="notasTicket"></div>
+
+    <div class="botones-caso">
+      <button class="btn-volver" onclick="volverSeleccion()">← Volver</button>
+    </div>
+  </div>
+<!-- PANEL DEL REPORTE -->
+  <div id="reportePanel">
+    <div class="container" id="reporte">
+      <div class="header">
+        <img src="data:image/png;base64,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" alt="Logo" width="100" height="50">
+        <div class="info">
+          <strong style="font-size: 10px; color: #ff4d00;">Bytte SAS</strong><br>
+          NIT: 830.115.764-4<br>
+          AV. Calle 26 Nº 69D-91 Of. 407<br>
+          Centro Empresarial Arrecife<br>
+          PBX: (+571) 7443800<br>
+          Bogotá DC - Colombia<br>
+          www.bytte.com.co
+        </div>
+        <div class="formato">
+          FOR-OPR-MNTO-028<br>
+          Emisión: 26-sep-2019<br>
+          Edición: 8-sep-2020<br>
+          Versión: 2
+        </div>
+      </div>
+    
+      <!-- Primera hoja -->
+      <div class="section">
+        <h2 style="text-align: center; margin-top: 3px;margin: bottom 1px;">Reporte Técnico</h2>
+        <table>
+          <tr><th>Fecha y Hora:</th><td><input type="text" id="fecha" readonly></td></tr>
+          <tr>
+            <th>Ubicación:</th>
+            <td>
+              <select id="ubicacion">
+                <option value="" disabled selected hidden>Seleccione una Ubicación</option>
+                <option value="conciliacion">Conciliación</option>
+                <option value="precidencial">Presidencial</option>
+                <option value="Montevideo">Montevideo</option>
+                <option value="CAN">CAN</option>
+                <option value="Aeropuerto">Aeropuerto</option>
+                <option value="Crai-Centro">Crai-Centro</option>
+                <option value="Quinta mutis">Quinta Mutis</option>
+                <option value="Hospital Meredy">Hospital Meredy</option>
+                <option value="Cardio infantil">Cardio infantil</option>
+                <option value="Campus-norte">Campus-norte</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>Técnico:</th>
+            <td>
+              <select id="tecnico">
+                <option>Jefferson Gualteros</option>
+                <option>Juan David García</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2 style="text-align: center; margin-top: 3px;margin: bottom 1px;">Información del Servicio</h2>
+        <table>
+          <tr><th>Garantía:</th><td><select><option>SI</option><option>NO</option></select></td></tr>
+          <tr><th>Cliente:</th><td><select id="cliente" onchange="actualizarCliente()"><option value="" disabled selected hidden>Seleccione un cliente</option><option value="Invima">Invima</option><option value="Rosario">Rosario</option></select></td></tr>
+          <tr><th>Nombre de encargado:</th><td><input type="text" id="encargado"></td></tr>
+          <tr><th>Correo electrónico:</th><td><input type="email" id="correo"></td></tr>
+          <tr><th>Serial:</th><td><input type="text" value="N/A"></td></tr>
+          <tr><th>Mac:</th><td><input type="text" value="N/A"></td></tr>
+        </table>
+      </div>
+ 
+      <div class="firma-area">
+        <h2 style="text-align: center;">Firma del Cliente</h2>
+        <div class="firma-canvas">  
+          <canvas id="firmaCanvas"></canvas>
+        </div>
+        <div class="firma-botones">
+          <button class="no-pdf" onclick="limpiarCanvas()">Limpiar Firma</button><br>
+        </div>
+      </div>
+
+      <!-- Segunda hoja -->
+      <div class="section">
+        <table>
+          <tr>
+            <th>Actividad:</th>
+            <td><textarea id="actividad" rows="3"></textarea></td>
+          </tr>
+          <tr>
+            <th>Observación pendientes:</th>
+            <td><textarea id="observacion" rows="3"></textarea></td>
+          </tr>
+          <tr>
+            <th>Tipo de terminal:</th>
+            <td>
+              <select>
+                <option>ByIntelligent L V1</option>
+                <option>Byintelligent L Bio V1 </option>
+                <option>Byintelligent L Bio V2 </option>
+                <option>ByEnroll</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>¿Requiere reparación?</th>
+            <td>
+              <select id="requiereReparacion" onchange="mostrarCamposReparacion()">
+                <option value="NO">NO</option>
+                <option value="SI">SI</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+
+        <div id="camposReparacion" style="display:none;">
+          <table>
+            <tr><th>Alimentación:</th><td><select><option>Sí</option><option>No</option></select></td></tr>
+            <tr><th>Display:</th><td><select><option>Sí</option><option>No</option></select></td></tr>
+            <tr><th>Distancia lectura:</th><td><select><option>Sí</option><option>No</option></select></td></tr>
+            <tr><th>Transacciones:</th><td><select><option>Sí</option><option>No</option></select></td></tr>
+            <tr><th>Activación de pulsos:</th><td><select><option>Sí</option><option>No</option></select></td></tr>
+            <tr><th>Verificación de salida con carga:</th><td><select><option>Sí</option><option>No</option></select></td></tr>
+            <tr><th>Bootloader:</th><td><select><option>Sí</option><option>No</option></select></td></tr>
+            <tr><th>Pruebas ByEnroll:</th><td><select><option>Sí</option><option>No</option></select></td></tr>
+            <tr><th>Tipo de firmware:</th><td><select name="tipo_firmware"><option value="puertas">Puertas</option><option value="torniquetes">Torniquetes</option></select></td></tr>
+          </table>
+        </div>
+
+ <table>
+  <tr>
+    <th>Calificación:</th>
+    <td id="calificacionContainer">
+      <button class="no-pdf" onclick="mostrarEncuesta()">Responder Encuesta</button>
+    </td>
+  </tr>
+</table>
+      </div>
+       <!-- Imágenes -->
+    <div>
+  <h2 style="text-align: center;">Imágenes del Servicio</h2>
+  <input type="file" id="imagen" accept="image/*" multiple onchange="mostrarImagenes()" />
+  <div id="preview"></div>
+
+  <!-- Contenedor para los botones -->
+  <div class="botones-acciones">
+    <button class="no-pdf" onclick="downloadPDF()">Descargar PDF</button>
+    <button class="no-pdf" onclick="reiniciarParametros()">Limpiar reporte</button>
+    <button class="no-pdf" onclick="cerrarSesion()">Cerrar sesión</button>
+     <button class="no-pdf" class="btn-volver" onclick="volverSeleccion()">← Volver</button>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+</div> 
+
+<!-- MODAL DE ENCUESTA DE SATISFACCIÓN -->
+<div id="encuestaModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="cerrarEncuesta()">&times;</span>
+    <h2>Encuesta de Satisfacción</h2>
+
+    <label for="ticketEncuesta">ID del Ticket:</label>
+    <input type="number" id="ticketEncuesta" placeholder="Ej: 123456" min="1" />
+
+    <label for="calificacion">Calificación:</label>
+ <select id="calificacion">
+  <option value="103" >😃 Extremadamente Feliz</option>
+  <option value="102" >😊 Muy Feliz</option>
+  <option value="101" >🙂 Feliz</option>
+  <option value="100" >😐 Neutral</option>
+  <option value="-101">🙁 Infeliz</option>
+  <option value="-102">☹️ Muy Infeliz</option>
+  <option value="-103">😡 Extremadamente Infeliz</option>
+</select>
+
+    <label for="feedback">Comentarios:</label>
+    <textarea id="feedback" placeholder="Escribe tu opinión..."></textarea>
+
+    <button onclick="enviarEncuesta()">Enviar Calificación</button>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
