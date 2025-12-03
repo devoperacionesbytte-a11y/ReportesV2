@@ -100,7 +100,7 @@ function consultarCaso() {
     })
     .catch(error => {
       console.error("Error:", error);
-      mostrarAlertaModal(`❌ No se pudo obtener el caso. ${error.message}`, "error");
+      mostrarAlertaModal(`❌ El caso no existe, Verifique el número ingresado. ${error.message}`, "error");
       contenido.innerHTML = "";
     });
 }
@@ -635,7 +635,7 @@ function iniciarTemporizadorInactividad() {
     localStorage.removeItem("autenticado");
     localStorage.removeItem("panelActivo");
     location.reload();
-  }, 240000); // 4 minutos
+    }, 3000000); // 50 minutos
 }
 
 function reiniciarTemporizador() {
@@ -803,17 +803,43 @@ function enviarEncuesta() {
     return;
   }
 
-  // 🚀 Enviamos la encuesta al backend → Freshdesk
-  fetch(`/api/tickets/${ticketId}/satisfaction`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      feedback: feedback,
-      ratings: { default_question: Number(rating) }
+  // 🚀 Primero consultar el ticket para validar existencia y etiquetas
+  fetch(`/api/tickets/${ticketId}`)
+    .then(res => {
+      if (res.status === 404) {
+        throw new Error("❌ El caso no existe, Verifique el número ingresado");
+      }
+      if (!res.ok) {
+        throw new Error(`Error ${res.status}: ${res.statusText}`);
+      }
+      return res.json();
     })
-  })
-    .then(res => res.json())
+    .then(ticket => {
+      const tieneByAccess = Array.isArray(ticket.tags) && ticket.tags.includes("byaccess");
+
+      if (!tieneByAccess) {
+        alert("⚠️ Este ticket no pertenece a ByAccess, no se puede enviar encuesta.");
+        return;
+      }
+
+      // ✅ Si existe y tiene la etiqueta, enviamos la encuesta
+      return fetch(`/api/tickets/${ticketId}/satisfaction`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          feedback: feedback,
+          ratings: { default_question: Number(rating) }
+        })
+      });
+    })
+    .then(res => {
+      if (!res) return; // si no se envió por falta de etiqueta
+      if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
+      return res.json();
+    })
     .then(data => {
+      if (!data) return;
+
       if (data.error) {
         alert(`❌ ${data.error}`);
         return;
@@ -848,8 +874,8 @@ function enviarEncuesta() {
       }
     })
     .catch(err => {
-      alert("❌ Error al enviar la encuesta");
-      console.error(err);
+      alert(err.message || "❌ Error al enviar la encuesta");
+      console.error("Error en enviarEncuesta:", err);
     });
-
 }
+
