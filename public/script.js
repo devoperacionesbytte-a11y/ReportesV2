@@ -593,7 +593,7 @@ function verificarLogin() {
   const contrasena = document.getElementById("CONTRASENA_VALIDA").value;
   const error = document.getElementById("error");
 
- fetch("http://192.168.5.14:3000/api/login", {
+ fetch("https://reportesv2.onrender.com/api/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ USUARIO_VALIDO: usuario, CONTRASENA_VALIDA: contrasena })
@@ -851,4 +851,5 @@ function enviarEncuesta() {
       alert("❌ Error al enviar la encuesta");
       console.error(err);
     });
+
 }
