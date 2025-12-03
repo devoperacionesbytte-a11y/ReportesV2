@@ -13,17 +13,6 @@
       "sizes": "192x114",
       "type": "image/png",
       "purpose": "any"
-    },
-    {
-     "src": "/Icons/icon-192.png",
-      "sizes": "192x114",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-        "src": "/Icons/icon-192.png",
-      "sizes": "192x114",
-      "type": "image/png",
-      "purpose": "any"
+    }
   ]
 }
