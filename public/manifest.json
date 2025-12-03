@@ -9,19 +9,19 @@
   "short_name": "ByA",
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
+      "src": "/Icons/icon-192.png",
+      "sizes": "192x114",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icon512_maskable.png",
+      "src": "/icons/icon512_maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icon512_rounded.png",
+      "src": "/icons/icon512_rounded.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
