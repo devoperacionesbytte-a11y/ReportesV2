@@ -716,10 +716,10 @@ function consultarHistorico(ticketId) {
                        <label>Archivos adjuntos:</label>
                        <ul>`;
             c.attachments.forEach(a => {
-              const enlace = a.attachment_url || a.url;
-              if (enlace) {
-                const safeUrl = encodeURI(enlace);
-                html += `<li><a href="${safeUrl}" target="_blank" rel="noopener">📎 ${a.name || "Archivo"}</a></li>`;
+              if (a.id) {
+                // Usamos la nueva ruta proxy del backend
+                const enlace = `/api/attachments/${a.id}`;
+                html += `<li><a href="${enlace}" target="_blank" rel="noopener">📎 ${a.name || "Archivo"}</a></li>`;
               }
             });
             html += `</ul></div>`;
@@ -745,7 +745,7 @@ function consultarHistorico(ticketId) {
       }
     })
     .catch(error => console.error("Error al traer conversaciones:", error));
-
+}
   // Notas internas
 fetch(`/api/tickets/${ticketId}/notes`)
   .then(r => {
@@ -878,4 +878,5 @@ function enviarEncuesta() {
       console.error("Error en enviarEncuesta:", err);
     });
 }
+
 
