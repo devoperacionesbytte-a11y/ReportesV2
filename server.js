@@ -262,6 +262,7 @@ app.post("/api/login", express.json(), (req, res) => {
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "Index.html"));
 });
+
 // Nueva ruta: proxy para adjuntos de Freshdesk
 app.get("/api/attachments/:id", async (req, res) => {
   const attachmentId = req.params.id;
@@ -270,24 +271,4 @@ app.get("/api/attachments/:id", async (req, res) => {
       headers: { Authorization: process.env.AUTH_HEADER }
     });
 
-    if (!response.ok) {
-      const text = await response.text();
-      console.error(`Error Freshdesk ${response.status}: ${text}`);
-      return res.status(response.status).json({ error: text });
-    }
-
-    // Pasar el archivo directamente al navegador
-    res.setHeader("Content-Type", response.headers.get("content-type"));
-    response.body.pipe(res);
-  } catch (err) {
-    console.error("Error obteniendo adjunto:", err);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-});  
-
-// 🚀 El listen SIEMPRE va al final
-app.listen(PORT, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
-
-}); 
-
+    if (!response.ok
