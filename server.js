@@ -260,10 +260,11 @@ app.post("/api/login", express.json(), (req, res) => {
 
 // Servir HTML principal
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "formulario_reporte(API).html"));
+  res.sendFile(path.join(__dirname, "public", "Index.html"));
 });
 
 // 🚀 El listen SIEMPRE va al final
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+
 }); 
