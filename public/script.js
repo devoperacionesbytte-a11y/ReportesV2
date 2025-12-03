@@ -716,11 +716,10 @@ function consultarHistorico(ticketId) {
                        <label>Archivos adjuntos:</label>
                        <ul>`;
             c.attachments.forEach(a => {
-              if (a.id) {
-                // Usamos la nueva ruta proxy del backend
-                const enlace = a.attachment_url || a.url;
-
-                html += `<li><a href="${enlace}" target="_blank" rel="noopener">📎 ${a.name || "Archivo"}</a></li>`;
+              const enlace = a.attachment_url || a.url;
+              if (enlace) {
+                const safeUrl = encodeURI(enlace);
+                html += `<li><a href="${safeUrl}" target="_blank" rel="noopener">📎 ${a.name || "Archivo"}</a></li>`;
               }
             });
             html += `</ul></div>`;
@@ -746,52 +745,6 @@ function consultarHistorico(ticketId) {
       }
     })
     .catch(error => console.error("Error al traer conversaciones:", error));
-}
-  // Notas internas
-fetch(`/api/tickets/${ticketId}/notes`)
-  .then(r => {
-    if (!r.ok) throw new Error(`Error ${r.status}: ${r.statusText}`);
-    return r.json();
-  })
-  .then(notas => {
-    console.log("Notas recibidas:", notas); // 👈 Depuración
-    let html = "<h3>📝 Notas internas</h3>";
-    if (Array.isArray(notas) && notas.length > 0) {
-      notas.forEach(n => {
-        const texto = n.body || n.description || "Sin contenido";
-        const fecha = n.created_at ? new Date(n.created_at).toLocaleString("es-CO") : "Sin fecha";
-        const autorPlaceholderId = `nota-autor-${n.id}`;
-
-        html += `
-          <div class="caso-detalle" style="margin-bottom:15px;">
-            <div class="caso-item"><label>Autor:</label> <span id="${autorPlaceholderId}">Cargando...</span></div>
-            <div class="caso-item"><label>Fecha:</label> ${fecha}</div>
-            <div class="caso-item" style="grid-column: 1 / -1;">
-              <label>Nota:</label>
-              <span style="white-space: pre-wrap;">${texto}</span>
-            </div>
-          </div>`;
-
-        // Resolver autor de la nota igual que en conversaciones
-        const posibleId = n.user_id || n.actor_id || n.requester_id || null;
-        obtenerAutor(posibleId).then(nombre => {
-          const el = document.getElementById(autorPlaceholderId);
-          if (el) el.innerText = nombre;
-        });
-      });
-    } else {
-      html += `<p style="color:#666;font-style:italic;">No hay notas internas.</p>`;
-    }
-    notasCont.innerHTML = html; // 👈 ahora se insertan en el div correcto
-  })
-  .catch(error => console.error("Error al traer notas:", error));
-}
-function mostrarEncuesta() {
-  document.getElementById("encuestaModal").style.display = "block";
-}
-
-function cerrarEncuesta() {
-  document.getElementById("encuestaModal").style.display = "none";
 }
 
 function enviarEncuesta() {
@@ -879,6 +832,7 @@ function enviarEncuesta() {
       console.error("Error en enviarEncuesta:", err);
     });
 }
+
 
 
 
