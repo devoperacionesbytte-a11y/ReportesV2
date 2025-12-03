@@ -263,12 +263,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "Index.html"));
 });
 
-// Nueva ruta: proxy para adjuntos de Freshdesk
-app.get("/api/attachments/:id", async (req, res) => {
-  const attachmentId = req.params.id;
-  try {
-    const response = await fetch(`${process.env.API_URL}/attachments/${attachmentId}`, {
-      headers: { Authorization: process.env.AUTH_HEADER }
-    });
-
-    if (!response.ok
+// 🚀 El listen SIEMPRE va al final
+app.listen(PORT, () => {
+  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+});
