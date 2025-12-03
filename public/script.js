@@ -718,7 +718,8 @@ function consultarHistorico(ticketId) {
             c.attachments.forEach(a => {
               if (a.id) {
                 // Usamos la nueva ruta proxy del backend
-                const enlace = `/api/attachments/${a.id}`;
+                const enlace = a.attachment_url || a.url;
+
                 html += `<li><a href="${enlace}" target="_blank" rel="noopener">📎 ${a.name || "Archivo"}</a></li>`;
               }
             });
@@ -878,5 +879,6 @@ function enviarEncuesta() {
       console.error("Error en enviarEncuesta:", err);
     });
 }
+
 
 
