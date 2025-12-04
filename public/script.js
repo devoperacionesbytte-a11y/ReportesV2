@@ -832,6 +832,20 @@ function enviarEncuesta() {
       console.error("Error en enviarEncuesta:", err);
     });
 }
+function mostrarEncuesta() {
+  const modal = document.getElementById("encuestaModal");
+  if (modal) {
+    modal.style.display = "block"; // abre el modal
+  }
+}
+
+function cerrarEncuesta() {
+  const modal = document.getElementById("encuestaModal");
+  if (modal) {
+    modal.style.display = "none"; // cierra el modal
+  }
+}
+
 
 
 
