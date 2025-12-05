@@ -51,8 +51,6 @@ function volverSeleccion() {
 
 // Definir la URL base del backend
 const BASE_URL = window.location.origin; 
-// Esto será http://localhost:3000 si entras desde tu propio PC,
-// o http://192.168.5.14:3000 si entras desde otro PC en la red
 
 // Variable global para guardar el ticket actual
 let currentTicketId = null;
@@ -818,14 +816,13 @@ function enviarEncuesta() {
       // 🚀 Reemplazamos el botón por la respuesta
       const contenedor = document.getElementById("calificacionContainer");
       if (contenedor) {
-        contenedor.innerHTML = `
-          <div class="respuesta-encuesta">
-            <p><strong>Ticket:</strong> ${ticketId}</p>
-            <p><strong>Calificación:</strong> ${calificacionTexto}</p>
-            <p><strong>Comentarios:</strong> ${feedback || "Sin comentarios"}</p>
-          </div>
-        `;
-      }
+      contenedor.innerHTML = `
+      <div class="respuesta-encuesta">
+      <p><strong>Calificación:</strong> ${calificacionTexto}</p>
+      </div>
+    `;
+  }
+
     })
     .catch(err => {
       alert(err.message || "❌ Error al enviar la encuesta");
@@ -845,6 +842,7 @@ function cerrarEncuesta() {
     modal.style.display = "none"; // cierra el modal
   }
 }
+
 
 
 
