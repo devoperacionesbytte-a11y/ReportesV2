@@ -814,14 +814,16 @@ function enviarEncuesta() {
       const calificacionTexto = satisfactionMap[rating] || rating;
 
       // 🚀 Reemplazamos el botón por la respuesta
-      const contenedor = document.getElementById("calificacionContainer");
-      if (contenedor) {
-      contenedor.innerHTML = `
-      <div class="respuesta-encuesta">
+   const contenedor = document.getElementById("calificacionContainer");
+if (contenedor) {
+  contenedor.innerHTML = `
+    <div class="respuesta-encuesta">
+      <p><strong>Número de Ticket:</strong> ${ticketId}</p>
       <p><strong>Calificación:</strong> ${calificacionTexto}</p>
-      </div>
-    `;
-  }
+      <p><strong>Comentario:</strong> ${feedback && feedback !== "" ? feedback : "Sin comentario"}</p>
+    </div>
+  `;
+}
 
     })
     .catch(err => {
@@ -842,6 +844,7 @@ function cerrarEncuesta() {
     modal.style.display = "none"; // cierra el modal
   }
 }
+
 
 
 
